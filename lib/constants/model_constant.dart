@@ -17,5 +17,13 @@ class ModelConstant {
         linkText: 'Public',
         halamanTujuan: PublicPage()),
   ];
-  static final listTab = ['Healthy', 'Technology', 'Finance', 'Arts', 'Sports'];
+  static final listTab = [
+    'Health',
+    'Technology',
+    'Business',
+    'Entertainment',
+    'General',
+    'Science',
+    'Sports'
+  ];
 }

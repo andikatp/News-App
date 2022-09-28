@@ -5,8 +5,8 @@ import 'package:news_app/services/news_services.dart';
 class NewsCubit extends Cubit<NewsState> {
   NewsCubit() : super(NewsState(newsArticle: []));
 
-  void getNews() async {
-    emit(NewsState(newsArticle: await NewsServices.getNews()));
+  void getNews(String category) async {
+    emit(NewsState(newsArticle: await NewsServices.getNews(category)));
   }
 }
 

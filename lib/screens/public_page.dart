@@ -13,7 +13,6 @@ class PublicPage extends StatelessWidget {
         return ElevatedButton(
           child: Text(state.counter.toString()),
           onPressed: () {
-            NewsServices.getNews();
           },
         );
       },

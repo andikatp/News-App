@@ -16,8 +16,9 @@ class _HomePageState extends State<HomePage> {
   @override
   void initState() {
     super.initState();
-    context.read<NewsCubit>().getNews();
   }
+
+  
 
   @override
   Widget build(BuildContext context) {

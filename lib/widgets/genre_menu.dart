@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:news_app/constants/model_constant.dart';
+import 'package:news_app/cubit/news_cubit.dart';
 
 class GenreMenu extends StatefulWidget {
   const GenreMenu({Key? key}) : super(key: key);
@@ -10,7 +12,16 @@ class GenreMenu extends StatefulWidget {
 }
 
 class _GenreMenuState extends State<GenreMenu> {
- 
+  @override
+  void initState() {
+    super.initState();
+    _getNewsCategory();
+  }
+
+  void _getNewsCategory() {
+    context.read<NewsCubit>().getNews(ModelConstant.listTab[_currentIndex]);
+  }
+
   int _currentIndex = 0;
   @override
   Widget build(BuildContext context) {
@@ -33,6 +44,7 @@ class _GenreMenuState extends State<GenreMenu> {
                     onTap: () {
                       setState(() {
                         _currentIndex = index;
+                        _getNewsCategory();
                       });
                     },
                     child: Padding(
