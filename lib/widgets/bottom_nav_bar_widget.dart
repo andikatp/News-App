@@ -57,7 +57,7 @@ class BottomNavBarWidget extends StatelessWidget {
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
                             Image.asset(
-                              ModelConstant.listNavigator[index].linkGambar ??
+                              ModelConstant.listNavigator[index].pictureLink ??
                                   'assets/homeIcon.png',
                               color: isActive ? Colors.red : Colors.grey,
                             ),
@@ -65,7 +65,7 @@ class BottomNavBarWidget extends StatelessWidget {
                               height: 6,
                             ),
                             Text(
-                              ModelConstant.listNavigator[index].linkText ??
+                              ModelConstant.listNavigator[index].textLink ??
                                   'Home',
                               style: GoogleFonts.nunito(
                                 textStyle: TextStyle(

@@ -5,17 +5,17 @@ class ModelConstant {
   ModelConstant._();
   static final listNavigator = [
     NavigatorModel(
-        linkGambar: 'assets/homeIcon.png',
-        linkText: 'Home',
-        halamanTujuan: HomePage()),
+        pictureLink: 'assets/homeIcon.png',
+        textLink: 'Home',
+        destinationPage: HomePage()),
     NavigatorModel(
-        linkGambar: 'assets/favoriteIcon.png',
-        linkText: 'Favorite',
-        halamanTujuan: FavoritePage()),
+        pictureLink: 'assets/favoriteIcon.png',
+        textLink: 'Favorite',
+        destinationPage: FavoritePage()),
     NavigatorModel(
-        linkGambar: 'assets/publicIcon.png',
-        linkText: 'Public',
-        halamanTujuan: PublicPage()),
+        pictureLink: 'assets/publicIcon.png',
+        textLink: 'Public',
+        destinationPage: PublicPage()),
   ];
   static final listTab = [
     'Health',

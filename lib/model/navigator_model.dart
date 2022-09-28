@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 
 class NavigatorModel {
-  String? linkGambar;
-  String? linkText;
-  Widget? halamanTujuan;
+  String? pictureLink;
+  String? textLink;
+  Widget? destinationPage;
 
-  NavigatorModel({this.linkGambar, this.linkText, this.halamanTujuan});
+  NavigatorModel({this.pictureLink, this.textLink, this.destinationPage});
 }

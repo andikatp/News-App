@@ -21,7 +21,7 @@ class _HomeScreenState extends State<HomeScreen> {
           BlocBuilder<BottomNavigatorCubit, BottomNavigatorState>(
             builder: (context, state) {
               return ModelConstant
-                      .listNavigator[state.pageNumber].halamanTujuan ??
+                      .listNavigator[state.pageNumber].destinationPage ??
                   HomePage();
             },
           ),
