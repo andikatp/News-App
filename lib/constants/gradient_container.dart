@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 
-class KGradientColor {
-  KGradientColor._();
+class KGradientContainer {
+  KGradientContainer._();
 
-  static const kGradientButtonColor = BoxDecoration(
+  static const kGradientButtonContainer = BoxDecoration(
     gradient: LinearGradient(colors: [
       Color(0xFFFF3A44),
       Color(0xFFFF8086),

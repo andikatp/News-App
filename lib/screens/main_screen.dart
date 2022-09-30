@@ -4,14 +4,14 @@ import 'package:news_app/cubit/bottom_navigator_cubit.dart';
 import 'screens.dart';
 import 'package:news_app/widgets/widgets.dart';
 
-class HomeScreen extends StatefulWidget {
-  const HomeScreen({Key? key}) : super(key: key);
+class MainScreen extends StatefulWidget {
+  const MainScreen({Key? key}) : super(key: key);
 
   @override
-  State<HomeScreen> createState() => _HomeScreenState();
+  State<MainScreen> createState() => _MainScreenState();
 }
 
-class _HomeScreenState extends State<HomeScreen> {
+class _MainScreenState extends State<MainScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(

@@ -1,9 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:news_app/constants/constants.dart';
+import 'package:news_app/cubit/bottom_navigator_cubit.dart';
 import 'package:news_app/cubit/news_cubit.dart';
+import 'package:news_app/model/news_response_model.dart';
 import 'package:news_app/widgets/widgets.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:pull_to_refresh/pull_to_refresh.dart';
+import 'package:shimmer/shimmer.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -13,12 +17,17 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
+  RefreshController controller = RefreshController();
   @override
   void initState() {
     super.initState();
   }
 
-  
+  @override
+  void dispose() {
+    super.dispose();
+    controller.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -29,30 +38,54 @@ class _HomePageState extends State<HomePage> {
       body: SafeArea(
         child: BlocBuilder<NewsCubit, NewsState>(
           builder: (context, state) {
-            return ListView(
-              children: [
-                HomePageAppBar(),
-                SizedBox(
-                  height: 24,
-                ),
-                TopHeadline(),
-                SizedBox(
-                  height: 24,
-                ),
-                Carousel(),
-                SizedBox(
-                  height: 24,
-                ),
-                GenreMenu(),
-                SizedBox(
-                  height: 24,
-                ),
-                ...state.newsArticle
-                    .map(
-                      (e) => NewsWidget(articles: e,),
+            if (state.isLoading == false) {
+              controller.refreshCompleted();
+            }
+            return SmartRefresher(
+              controller: controller,
+              onRefresh: () {
+                int categoryIndex =
+                    context.read<BottomNavigatorCubit>().state.categoryIndex;
+                context
+                    .read<NewsCubit>()
+                    .getAllNews(ModelConstant.listTab[categoryIndex]);
+              },
+              child: ListView(
+                children: [
+                  HomePageAppBarWidget(),
+                  SizedBox(
+                    height: 24,
+                  ),
+                  TopHeadlineWidget(),
+                  SizedBox(
+                    height: 24,
+                  ),
+                  CarouselWidget(),
+                  SizedBox(
+                    height: 24,
+                  ),
+                  CategoriesMenuWidget(),
+                  SizedBox(
+                    height: 24,
+                  ),
+                  if (state.isLoading)
+                    ...List.generate(
+                      5,
+                      (index) => NewsWidget(
+                        articles: Articles(),
+                        isLoading: true,
+                      ),
                     )
-                    .toList(),
-              ],
+                  else
+                    ...state.newsArticleCategory
+                        .map(
+                          (e) => NewsWidget(
+                            articles: e,
+                          ),
+                        )
+                        .toList(),
+                ],
+              ),
             );
           },
         ),

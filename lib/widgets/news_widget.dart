@@ -4,10 +4,12 @@ import 'package:news_app/constants/constants.dart';
 import 'package:news_app/model/news_response_model.dart';
 import 'package:news_app/widgets/widgets.dart';
 import 'package:intl/intl.dart';
+import 'package:shimmer/shimmer.dart';
 
 class NewsWidget extends StatelessWidget {
-  const NewsWidget({super.key, required this.articles});
+  const NewsWidget({super.key, required this.articles, this.isLoading = false});
   final Articles articles;
+  final bool isLoading;
 
   @override
   Widget build(BuildContext context) {
@@ -17,19 +19,28 @@ class NewsWidget extends StatelessWidget {
         borderRadius: BorderRadius.circular(8),
         child: Stack(
           children: [
-            Image.network(
-              articles.urlToImage ?? '',
-              height: 128,
-              width: double.infinity,
-              fit: BoxFit.cover,
-              errorBuilder: (context, error, stackTrace) {
-                return SizedBox(
+            if (isLoading)
+              Shimmer.fromColors(
+                  child: Container(
                     height: 128,
-                    width: double.infinity,
-                    child: Text(error.toString()));
-              },
-            ),
-            LinearGradientWidget(),
+                    color: Colors.black,
+                  ),
+                  baseColor: Colors.grey.withOpacity(0.5),
+                  highlightColor: Colors.grey.withOpacity(0.7))
+            else
+              Image.network(
+                articles.urlToImage ?? '',
+                height: 128,
+                width: double.infinity,
+                fit: BoxFit.cover,
+                errorBuilder: (context, error, stackTrace) {
+                  return SizedBox(
+                      height: 128,
+                      width: double.infinity,
+                      child: Text(error.toString()));
+                },
+              ),
+            if (!isLoading) LinearGradientWidget(),
             Positioned.fill(
               child: Padding(
                 padding:
@@ -38,31 +49,45 @@ class NewsWidget extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    Text(
-                      articles.title ?? 'Judul Tidak Ditemukan',
-                      maxLines: 3,
-                      overflow: TextOverflow.ellipsis,
-                      style: GoogleFonts.dmSerifDisplay(
-                        textStyle: KTextStyleNice.kFooter.copyWith(
-                          fontSize: 18,
+                    if (isLoading)
+                      _ShimmerText(
+                        width: double.infinity,
+                      )
+                    else
+                      Text(
+                        articles.title ?? 'Judul Tidak Ditemukan',
+                        maxLines: 3,
+                        overflow: TextOverflow.ellipsis,
+                        style: GoogleFonts.dmSerifDisplay(
+                          textStyle: KTextStyleNice.kFooter.copyWith(
+                            fontSize: 18,
+                          ),
                         ),
                       ),
-                    ),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        Text(
-                          articles.author ?? 'Tidak Ada Penulis',
-                          style: GoogleFonts.nunito(
-                              textStyle: KTextStyleNice.kFooter.copyWith(
-                                  fontSize: 12, fontWeight: FontWeight.w600)),
-                        ),
-                        Text(
-                          formatDate(),
-                          style: GoogleFonts.nunito(
-                              textStyle: KTextStyleNice.kFooter.copyWith(
-                                  fontSize: 12, fontWeight: FontWeight.w600)),
-                        ),
+                        if (isLoading)
+                          Expanded(child: _ShimmerText())
+                        else
+                          Text(
+                            articles.author ?? 'Tidak Ada Penulis',
+                            style: GoogleFonts.nunito(
+                                textStyle: KTextStyleNice.kFooter.copyWith(
+                                    fontSize: 12, fontWeight: FontWeight.w600)),
+                          ),
+                        Spacer(),
+                        if (isLoading)
+                          Expanded(
+                            child: _ShimmerText(),
+                          )
+                        else
+                          Text(
+                            formatDate(),
+                            style: GoogleFonts.nunito(
+                                textStyle: KTextStyleNice.kFooter.copyWith(
+                                    fontSize: 12, fontWeight: FontWeight.w600)),
+                          ),
                       ],
                     )
                   ],
@@ -85,5 +110,26 @@ class NewsWidget extends StatelessWidget {
       time = dateString;
     } catch (e) {}
     return time;
+  }
+}
+
+class _ShimmerText extends StatelessWidget {
+  const _ShimmerText({
+    super.key,
+    this.width = double.infinity,
+  });
+  final double width;
+
+  @override
+  Widget build(BuildContext context) {
+    return Shimmer.fromColors(
+      baseColor: Colors.grey.withOpacity(0.7),
+      highlightColor: Colors.grey,
+      child: Container(
+        color: Colors.black,
+        height: 18,
+        width: width,
+      ),
+    );
   }
 }

@@ -3,15 +3,38 @@ import 'package:news_app/model/news_response_model.dart';
 import 'package:news_app/services/news_services.dart';
 
 class NewsCubit extends Cubit<NewsState> {
-  NewsCubit() : super(NewsState(newsArticle: []));
+  NewsCubit()
+      : super(NewsState(
+            newsArticleCategory: [],
+            newsArticleHeadline: [],
+            isLoading: false));
 
-  void getNews(String category) async {
-    emit(NewsState(newsArticle: await NewsServices.getNews(category)));
+  void getAllNews(String category) async {
+    emit(NewsState(
+      newsArticleCategory: [],
+      newsArticleHeadline: [],
+      isLoading: true,
+    ));
+
+    await Future.delayed(Duration(seconds: 1));
+    final newsArticle = await NewsServices.getNewsCategories(category);
+    final newsArticleHeadline = await NewsServices.getNewsHeadline();
+    
+    emit(NewsState(
+      newsArticleCategory: newsArticle,
+      newsArticleHeadline: newsArticleHeadline,
+      isLoading: false,
+    ));
   }
 }
 
 class NewsState {
-  final List<Articles> newsArticle;
+  final List<Articles> newsArticleCategory;
+  final List<Articles> newsArticleHeadline;
+  final bool isLoading;
 
-  NewsState({required this.newsArticle});
+  NewsState(
+      {required this.newsArticleCategory,
+      required this.newsArticleHeadline,
+      required this.isLoading});
 }

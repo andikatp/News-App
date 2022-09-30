@@ -3,8 +3,8 @@ import 'package:news_app/constants/gradient_container.dart';
 import 'package:news_app/constants/constants.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-class HomePageAppBar extends StatelessWidget {
-  const HomePageAppBar({
+class HomePageAppBarWidget extends StatelessWidget {
+  const HomePageAppBarWidget({
     super.key,
   });
 
@@ -39,7 +39,7 @@ class HomePageAppBar extends StatelessWidget {
           Container(
             width: 32,
             height: 32,
-            decoration: KGradientColor.kGradientButtonColor.copyWith(
+            decoration: KGradientContainer.kGradientButtonContainer.copyWith(
               borderRadius: BorderRadius.circular(16),
             ),
             child: Image.asset('assets/bellIcon.png'),

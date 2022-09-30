@@ -32,7 +32,7 @@ class MyApp extends StatelessWidget {
               create: (BuildContext context) => NewsCubit(),
             ),
           ],
-          child: HomeScreen(),
+          child: MainScreen(),
         ));
   }
 }

@@ -2,16 +2,17 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:news_app/constants/model_constant.dart';
+import 'package:news_app/cubit/bottom_navigator_cubit.dart';
 import 'package:news_app/cubit/news_cubit.dart';
 
-class GenreMenu extends StatefulWidget {
-  const GenreMenu({Key? key}) : super(key: key);
+class CategoriesMenuWidget extends StatefulWidget {
+  const CategoriesMenuWidget({Key? key}) : super(key: key);
 
   @override
-  State<GenreMenu> createState() => _GenreMenuState();
+  State<CategoriesMenuWidget> createState() => _CategoriesMenuWidgetState();
 }
 
-class _GenreMenuState extends State<GenreMenu> {
+class _CategoriesMenuWidgetState extends State<CategoriesMenuWidget> {
   @override
   void initState() {
     super.initState();
@@ -19,10 +20,11 @@ class _GenreMenuState extends State<GenreMenu> {
   }
 
   void _getNewsCategory() {
-    context.read<NewsCubit>().getNews(ModelConstant.listTab[_currentIndex]);
+    int categoryIndex =
+        context.read<BottomNavigatorCubit>().state.categoryIndex;
+    context.read<NewsCubit>().getAllNews(ModelConstant.listTab[categoryIndex]);
   }
 
-  int _currentIndex = 0;
   @override
   Widget build(BuildContext context) {
     return SingleChildScrollView(
@@ -35,34 +37,42 @@ class _GenreMenuState extends State<GenreMenu> {
               ModelConstant.listTab.length,
               (index) => Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 4),
-                child: Container(
-                  decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(16),
-                      color: index == _currentIndex ? Colors.red : Colors.white,
-                      border: Border.all(color: Color(0xFFF0F1FA))),
-                  child: GestureDetector(
-                    onTap: () {
-                      setState(() {
-                        _currentIndex = index;
-                        _getNewsCategory();
-                      });
-                    },
-                    child: Padding(
-                      padding:
-                          EdgeInsets.symmetric(horizontal: 16, vertical: 8),
-                      child: Text(
-                        ModelConstant.listTab[index],
-                        style: GoogleFonts.nunito(
-                          textStyle: TextStyle(
-                              fontSize: 12,
-                              fontWeight: FontWeight.w700,
-                              color: index == _currentIndex
-                                  ? Colors.white
-                                  : Colors.black),
+                child: BlocBuilder<BottomNavigatorCubit, BottomNavigatorState>(
+                  builder: (context, state) {
+                    return Container(
+                      decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(16),
+                          color: index == state.categoryIndex
+                              ? Colors.red
+                              : Colors.white,
+                          border: Border.all(color: Color(0xFFF0F1FA))),
+                      child: GestureDetector(
+                        onTap: () {
+                          setState(() {
+                            context
+                                .read<BottomNavigatorCubit>()
+                                .moveCategory(index);
+                            _getNewsCategory();
+                          });
+                        },
+                        child: Padding(
+                          padding:
+                              EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+                          child: Text(
+                            ModelConstant.listTab[index],
+                            style: GoogleFonts.nunito(
+                              textStyle: TextStyle(
+                                  fontSize: 12,
+                                  fontWeight: FontWeight.w700,
+                                  color: index == state.categoryIndex
+                                      ? Colors.white
+                                      : Colors.black),
+                            ),
+                          ),
                         ),
                       ),
-                    ),
-                  ),
+                    );
+                  },
                 ),
               ),
             )

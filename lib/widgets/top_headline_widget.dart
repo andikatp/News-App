@@ -1,8 +1,8 @@
 import 'package:google_fonts/google_fonts.dart';
 import 'package:flutter/material.dart';
 
-class TopHeadline extends StatelessWidget {
-  const TopHeadline({
+class TopHeadlineWidget extends StatelessWidget {
+  const TopHeadlineWidget({
     super.key,
   });
 
