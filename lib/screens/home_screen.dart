@@ -1,27 +1,20 @@
-import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:news_app/constants/constants.dart';
 import 'package:news_app/cubit/bottom_navigator_cubit.dart';
 import 'package:news_app/cubit/news_cubit.dart';
 import 'package:news_app/model/news_response_model.dart';
 import 'package:news_app/widgets/widgets.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:pull_to_refresh/pull_to_refresh.dart';
-import 'package:shimmer/shimmer.dart';
 
-class HomePage extends StatefulWidget {
-  const HomePage({Key? key}) : super(key: key);
+class HomeScreen extends StatefulWidget {
+  const HomeScreen({Key? key}) : super(key: key);
 
   @override
-  State<HomePage> createState() => _HomePageState();
+  State<HomeScreen> createState() => _HomeScreenState();
 }
 
-class _HomePageState extends State<HomePage> {
+class _HomeScreenState extends State<HomeScreen> {
   RefreshController controller = RefreshController();
-  @override
-  void initState() {
-    super.initState();
-  }
 
   @override
   void dispose() {
@@ -52,20 +45,20 @@ class _HomePageState extends State<HomePage> {
               },
               child: ListView(
                 children: [
-                  HomePageAppBarWidget(),
-                  SizedBox(
+                  const HomePageAppBarWidget(),
+                  const SizedBox(
                     height: 24,
                   ),
-                  TopHeadlineWidget(),
-                  SizedBox(
+                  const TopHeadlineWidget(),
+                  const SizedBox(
                     height: 24,
                   ),
-                  CarouselWidget(),
-                  SizedBox(
+                  const CarouselWidget(),
+                  const SizedBox(
                     height: 24,
                   ),
-                  CategoriesMenuWidget(),
-                  SizedBox(
+                  const CategoriesMenuWidget(),
+                  const SizedBox(
                     height: 24,
                   ),
                   if (state.isLoading)

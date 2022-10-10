@@ -18,8 +18,10 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
         debugShowCheckedModeBanner: false,
         theme: ThemeData(
-            // fontFamily: GoogleFonts.nunito().fontFamily
-            ),
+          textTheme: GoogleFonts.nunitoTextTheme(
+            Theme.of(context).textTheme,
+          ),
+        ),
         home: MultiBlocProvider(
           providers: [
             BlocProvider<CounterCubit>(
@@ -32,7 +34,7 @@ class MyApp extends StatelessWidget {
               create: (BuildContext context) => NewsCubit(),
             ),
           ],
-          child: MainScreen(),
+          child: const MainScreenStack(),
         ));
   }
 }

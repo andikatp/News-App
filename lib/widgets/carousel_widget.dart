@@ -19,7 +19,6 @@ class CarouselWidget extends StatelessWidget {
             disableCenter: false,
             padEnds: false,
             height: 240,
-            enlargeCenterPage: true,
             viewportFraction: 0.8,
             enableInfiniteScroll: false,
           ),
@@ -45,7 +44,7 @@ class CarouselWidget extends StatelessWidget {
                                 child: Center(child: Text(error.toString())));
                           },
                         ),
-                        LinearGradientWidget(),
+                        const LinearGradientWidget(),
                         Padding(
                           padding: const EdgeInsets.all(16),
                           child: Column(
@@ -54,33 +53,29 @@ class CarouselWidget extends StatelessWidget {
                             children: [
                               Text(
                                 i.author ?? 'Tidak Ada Penulis',
-                                style: GoogleFonts.nunito(
-                                  textStyle: TextStyle(
-                                      color: Colors.white,
-                                      fontSize: 10,
-                                      fontWeight: FontWeight.w800),
-                                ),
+                                style: const TextStyle(
+                                    color: Colors.white,
+                                    fontSize: 10,
+                                    fontWeight: FontWeight.w800),
                               ),
                               Text(
                                 i.title ?? 'Tidak Ada Judul',
                                 style: GoogleFonts.dmSerifDisplay(
-                                  textStyle: TextStyle(
+                                  textStyle: const TextStyle(
                                       color: Colors.white,
                                       fontWeight: FontWeight.w700,
                                       fontSize: 16),
                                 ),
                               ),
-                              SizedBox(height: 24),
+                              const SizedBox(height: 24),
                               Text(
                                 i.description ?? '',
                                 maxLines: 2,
                                 overflow: TextOverflow.ellipsis,
-                                style: GoogleFonts.nunito(
-                                  textStyle: TextStyle(
-                                      color: Colors.white,
-                                      fontWeight: FontWeight.normal,
-                                      fontSize: 10),
-                                ),
+                                style: const TextStyle(
+                                    color: Colors.white,
+                                    fontWeight: FontWeight.normal,
+                                    fontSize: 10),
                               ),
                             ],
                           ),

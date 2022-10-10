@@ -45,7 +45,7 @@ class _CategoriesMenuWidgetState extends State<CategoriesMenuWidget> {
                           color: index == state.categoryIndex
                               ? Colors.red
                               : Colors.white,
-                          border: Border.all(color: Color(0xFFF0F1FA))),
+                          border: Border.all(color: const Color(0xFFF0F1FA))),
                       child: GestureDetector(
                         onTap: () {
                           setState(() {
@@ -56,18 +56,16 @@ class _CategoriesMenuWidgetState extends State<CategoriesMenuWidget> {
                           });
                         },
                         child: Padding(
-                          padding:
-                              EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+                          padding: const EdgeInsets.symmetric(
+                              horizontal: 16, vertical: 8),
                           child: Text(
                             ModelConstant.listTab[index],
-                            style: GoogleFonts.nunito(
-                              textStyle: TextStyle(
-                                  fontSize: 12,
-                                  fontWeight: FontWeight.w700,
-                                  color: index == state.categoryIndex
-                                      ? Colors.white
-                                      : Colors.black),
-                            ),
+                            style: TextStyle(
+                                fontSize: 12,
+                                fontWeight: FontWeight.w700,
+                                color: index == state.categoryIndex
+                                    ? Colors.white
+                                    : Colors.black),
                           ),
                         ),
                       ),

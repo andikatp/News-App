@@ -10,14 +10,14 @@ class BottomNavBarWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: EdgeInsets.all(40),
+      margin: const EdgeInsets.all(40),
       height: 66,
       decoration: BoxDecoration(
         boxShadow: [
           BoxShadow(
-            color: Color(0xFF8C8C8C).withOpacity(0.15),
+            color: const Color(0xFF8C8C8C).withOpacity(0.15),
             blurRadius: 2,
-            offset: Offset(-2.4, 4.0), // shadow direction: bottom right
+            offset: const Offset(-2.4, 4.0), // shadow direction: bottom right
           )
         ],
         color: Colors.white,
@@ -25,7 +25,7 @@ class BottomNavBarWidget extends StatelessWidget {
       ),
       child: Column(
         children: [
-          SizedBox(
+          const SizedBox(
             height: 4,
           ),
           Container(
@@ -34,7 +34,7 @@ class BottomNavBarWidget extends StatelessWidget {
             decoration: BoxDecoration(
                 color: Colors.grey, borderRadius: BorderRadius.circular(8)),
           ),
-          SizedBox(
+          const SizedBox(
             height: 8,
           ),
           BlocBuilder<BottomNavigatorCubit, BottomNavigatorState>(
@@ -61,17 +61,15 @@ class BottomNavBarWidget extends StatelessWidget {
                                   'assets/homeIcon.png',
                               color: isActive ? Colors.red : Colors.grey,
                             ),
-                            SizedBox(
+                            const SizedBox(
                               height: 6,
                             ),
                             Text(
                               ModelConstant.listNavigator[index].textLink ??
                                   'Home',
-                              style: GoogleFonts.nunito(
-                                textStyle: TextStyle(
-                                  color: isActive ? Colors.red : Colors.grey,
-                                  fontSize: 10,
-                                ),
+                              style: TextStyle(
+                                color: isActive ? Colors.red : Colors.grey,
+                                fontSize: 10,
                               ),
                             ),
                           ],
@@ -86,6 +84,5 @@ class BottomNavBarWidget extends StatelessWidget {
         ],
       ),
     );
-    ;
   }
 }

@@ -4,14 +4,14 @@ import 'package:news_app/cubit/bottom_navigator_cubit.dart';
 import 'screens.dart';
 import 'package:news_app/widgets/widgets.dart';
 
-class MainScreen extends StatefulWidget {
-  const MainScreen({Key? key}) : super(key: key);
+class MainScreenStack extends StatefulWidget {
+  const MainScreenStack({Key? key}) : super(key: key);
 
   @override
-  State<MainScreen> createState() => _MainScreenState();
+  State<MainScreenStack> createState() => _MainScreenStackState();
 }
 
-class _MainScreenState extends State<MainScreen> {
+class _MainScreenStackState extends State<MainScreenStack> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -22,10 +22,10 @@ class _MainScreenState extends State<MainScreen> {
             builder: (context, state) {
               return ModelConstant
                       .listNavigator[state.pageNumber].destinationPage ??
-                  HomePage();
+                  const HomeScreen();
             },
           ),
-          BottomNavBarWidget(),
+          const BottomNavBarWidget(),
         ],
       ),
     );

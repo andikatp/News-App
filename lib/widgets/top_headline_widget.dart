@@ -20,10 +20,10 @@ class TopHeadlineWidget extends StatelessWidget {
           ),
           Row(
             crossAxisAlignment: CrossAxisAlignment.center,
-            children: [
+            children: const [
               Text(
                 'See All',
-                style: GoogleFonts.nunito(
+                style: TextStyle(
                   fontSize: 12,
                   fontWeight: FontWeight.w500,
                   color: Color(0xFF0080FF),

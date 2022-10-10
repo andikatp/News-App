@@ -11,7 +11,7 @@ class HomePageAppBarWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: EdgeInsets.fromLTRB(15, 16, 15, 0),
+      padding: const EdgeInsets.fromLTRB(15, 16, 15, 0),
       child: Row(
         children: [
           Expanded(
@@ -19,21 +19,19 @@ class HomePageAppBarWidget extends StatelessWidget {
               height: 32.0,
               child: TextField(
                 decoration: KTextFieldNice.kInputField.copyWith(
-                  hintStyle: GoogleFonts.nunito(
-                    textStyle: TextStyle(
-                        color: Color(0xFF818181).withOpacity(0.5),
-                        fontSize: 12.0,
-                        fontWeight: FontWeight.bold),
-                  ),
+                  hintStyle: TextStyle(
+                      color: const Color(0xFF818181).withOpacity(0.5),
+                      fontSize: 12.0,
+                      fontWeight: FontWeight.bold),
                   suffixIcon: Image.asset(
                     'assets/searchIcon.png',
-                    color: Color(0xFF818181),
+                    color: const Color(0xFF818181),
                   ),
                 ),
               ),
             ),
           ),
-          SizedBox(
+          const SizedBox(
             width: 16,
           ),
           Container(
