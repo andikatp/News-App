@@ -20,6 +20,7 @@ class _CategoriesMenuWidgetState extends State<CategoriesMenuWidget> {
   }
 
   void _getNewsCategory() {
+    
     int categoryIndex =
         context.read<BottomNavigatorCubit>().state.categoryIndex;
     context.read<NewsCubit>().getAllNews(ModelConstant.listTab[categoryIndex]);

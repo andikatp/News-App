@@ -24,9 +24,6 @@ class _HomeScreenState extends State<HomeScreen> {
 
   @override
   Widget build(BuildContext context) {
-    final angka = [1, 2, 3, 4, 5];
-    final gabunganAngka = [7, 8, 8, 8, 8, ...angka];
-    print(gabunganAngka[6]);
     return Scaffold(
       body: SafeArea(
         child: BlocBuilder<NewsCubit, NewsState>(

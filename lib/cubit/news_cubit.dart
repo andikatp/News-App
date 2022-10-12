@@ -10,16 +10,12 @@ class NewsCubit extends Cubit<NewsState> {
             isLoading: false));
 
   void getAllNews(String category) async {
-    emit(NewsState(
-      newsArticleCategory: [],
-      newsArticleHeadline: [],
-      isLoading: true,
-    ));
+    emit(state.copyWith(newsArticleCategory: [], newsArticleHeadline: [], isLoading: true));
 
     await Future.delayed(Duration(seconds: 1));
     final newsArticle = await NewsServices.getNewsCategories(category);
     final newsArticleHeadline = await NewsServices.getNewsHeadline();
-    
+
     emit(NewsState(
       newsArticleCategory: newsArticle,
       newsArticleHeadline: newsArticleHeadline,
@@ -37,4 +33,16 @@ class NewsState {
       {required this.newsArticleCategory,
       required this.newsArticleHeadline,
       required this.isLoading});
+
+  NewsState copyWith({
+    List<Articles>? newsArticleCategory,
+    List<Articles>? newsArticleHeadline,
+    bool? isLoading,
+  }) {
+    return NewsState(
+      newsArticleCategory: newsArticleCategory ?? this.newsArticleCategory,
+      newsArticleHeadline: newsArticleHeadline ?? this.newsArticleHeadline,
+      isLoading: isLoading ?? this.isLoading,
+    );
+  }
 }
