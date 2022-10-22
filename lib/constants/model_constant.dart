@@ -1,6 +1,5 @@
 import 'package:news_app/model/models.dart';
 import 'package:news_app/screens/screens.dart';
-import 'package:news_app/screens/tes_doang.dart';
 
 class ModelConstant {
   ModelConstant._();
@@ -17,10 +16,6 @@ class ModelConstant {
         pictureLink: 'assets/publicIcon.png',
         textLink: 'Public',
         destinationPage: const PublicPage()),
-    NavigatorModel(
-        pictureLink: 'assets/publicIcon.png',
-        textLink: 'Tes',
-        destinationPage: const TesDoang()),
   ];
   static final listTab = [
     'Health',

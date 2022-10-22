@@ -9,12 +9,12 @@ import 'package:news_app/cubit/news_cubit.dart';
 import 'screens/screens.dart';
 
 void main() {
-  runApp(
-    DevicePreview(
-      enabled: !kReleaseMode,
-      builder: (context) => const MyApp(), // Wrap your app
-    ),
-  );
+  runApp(MyApp()
+      // DevicePreview(
+      //   enabled: !kReleaseMode,
+      //   builder: (context) => const MyApp(), // Wrap your app
+      // ),
+      );
 }
 
 class MyApp extends StatelessWidget {
