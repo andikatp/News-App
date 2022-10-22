@@ -1,16 +1,19 @@
-# news_app
+# News App
 
-A new Flutter project.
+A standard news app connected with API from [URL] (https://saurav.tech/NewsAPI/"
+top_headlines_api = "<BASE_URL>/top-headlines/category/<category>/<country_code>.json"
+everything_api = "<BASE_URL>/everything/<source_id>.json)
 
-## Getting Started
+# TECHNOLOGY
 
-This project is a starting point for a Flutter application.
+- google_fonts
+- carousel_slider
+- flutter_bloc: ^8.1.1
+- http: ^0.13.5
+- intl: ^0.17.0
+- shimmer: ^2.0.0
+- pull_to_refresh: ^2.0.0
+- flutter_html: ^2.2.1
+- device_preview: ^1.1.0
 
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+# DEMO
