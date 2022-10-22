@@ -1,6 +1,6 @@
 # News App
 
-A standard news app connected with API from [URL] (https://saurav.tech/NewsAPI/top-headlines/category/health/in.json)
+A standard news app connected with API from [URL](https://saurav.tech/NewsAPI/top-headlines/category/health/in.json)
 
 # TECHNOLOGY
 
