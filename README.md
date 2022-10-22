@@ -1,8 +1,6 @@
 # News App
 
-A standard news app connected with API from [URL] (https://saurav.tech/NewsAPI/"
-top_headlines_api = "<BASE_URL>/top-headlines/category/<category>/<country_code>.json"
-everything_api = "<BASE_URL>/everything/<source_id>.json)
+A standard news app connected with API from [URL] (https://saurav.tech/NewsAPI/top-headlines/category/health/in.json)
 
 # TECHNOLOGY
 
