@@ -15,3 +15,4 @@ A standard news app connected with API from [URL](https://saurav.tech/NewsAPI/to
 - device_preview: ^1.1.0
 
 # DEMO
+![Demo](https://github.com/andikatp/GifTest/blob/main/news.gif)
